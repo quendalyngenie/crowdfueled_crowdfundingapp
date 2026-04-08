@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notifcations</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let each of rewards">
+    <div>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img [src]=each.image>
+        </ion-avatar>
+        <ion-icon *ngIf="each.unread" slot="end" style="color: red;" name="mail-unread-outline"></ion-icon>
+        <ion-label>
+          <h3>{{each.prjName}}</h3>
+          <p *ngIf="each.claimed == 'notValid'">
+            Project was unfortunately unable to meet its goal.
+          </p>
+          <p *ngIf="each.claimed != 'notValid'">
+            Project was successful!
+          </p>
+        </ion-label>
+
+      </ion-item>
+      <!-- <ion-label> -->
+
+      <ion-button slot="end" fill="clear" (click)="rewardDetail(each)">View More Details</ion-button>
+      <!-- </ion-label> -->
+    </div>
+
+
+  </ion-card>
+</ion-content>

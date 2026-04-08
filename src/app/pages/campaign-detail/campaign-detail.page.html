@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="previous-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="campaign">{{ campaign.prjName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="campaign">
+  <div class="campaign-image-container">
+    <img [src]="imageUrl" class="campaign-image" />
+  </div>
+  <div class="campaign-details-container">
+    <ion-progress-bar class="custom-progress-bar" value="{{ campaign.progress/100 }}"
+      color="success"></ion-progress-bar>
+    <h2 class="campaign-details-title">{{ campaign.prjName }}</h2>
+    <p><strong>Progress:</strong> {{ campaign.progress }}%</p> 
+    <ion-row>
+      <ion-col size="4">
+        <div class="icon-text-container">
+          <ion-icon name="disc"></ion-icon>
+          <p class="investor-text">Target</p>
+          <p class="numContributors-text">{{ campaign.target }} ETH</p>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="icon-text-container">
+          <ion-icon name="card"></ion-icon>
+          <p class="investor-text">Invested</p>
+          <p class="numContributors-text">{{totalTransactions }} ETH</p>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="icon-text-container">
+          <ion-icon name="person-circle"></ion-icon>
+          <p class="investor-text">Investor</p>
+          <p class="numContributors-text">{{ numContributors }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    
+    <p><strong>Story:</strong> {{ campaign.story }}</p>
+    <p><strong>Project Type:</strong> {{ campaign.prjType }}</p>
+    <p><strong>Start Date:</strong> {{ campaign.startDate.toDate() | date: 'short' }}</p>
+    <p><strong>End Date:</strong> {{ campaign.endDate.toDate() | date: 'short' }}</p>
+    <p><strong>Category:</strong> {{ campaign.category }}</p>
+    <p><strong>Funding Type:</strong> {{ campaign.fundingType }}</p>
+    <p><strong>Risk:</strong> {{ campaign.risk }}</p>
+    <ion-button *ngIf="campaign.prjType === 'Business'" [routerLink]="['/check-out',campaignId]" expand="block">Invest</ion-button>
+    <ion-button *ngIf="campaign.prjType === 'Fund Finders'" [routerLink]="['/check-out',campaignId]" expand="block">Donate</ion-button>
+  </div>
+</ion-content>

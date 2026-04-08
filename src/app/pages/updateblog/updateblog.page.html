@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Update Blog</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img [src]=bImage alt="" class="image-card">
+  <form [formGroup]="editBlogForm">
+    <ion-item>
+      <img [src]="photo">
+    </ion-item>
+    <ion-item>
+      <ion-button id="camera-button" (click)="takePhoto()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-input formControlName="bTitle"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Story</ion-label>
+      <ion-input formControlName="bStory"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Read Time</ion-label>
+      <ion-input formControlName="readTime"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" color="secondary" type="submit" (click)=update()>Update</ion-button>
+  </form>
+
+</ion-content>

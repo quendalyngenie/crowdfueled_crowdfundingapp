@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Project</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" [routerLink]="['/create-updates', prjID]">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <img [src]="photo">
+  </ion-item>
+
+  <ion-item>
+    <ion-button id="camera-button" (click)="takePhoto()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <form [formGroup]="editProjectsForm">
+    <ion-item>
+      <ion-label position="stacked">Project Name:</ion-label>
+      <ion-input type="text" placeholder="Name of your Project" formControlName="prjName"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="editProjectsForm.controls.prjName.errors && submitted" color="danger">
+      Name is required
+    </ion-label>
+
+    <ion-item>
+      <ion-label position="stacked">Category</ion-label>
+      <ion-select formControlName="category">
+        <ion-select-option *ngFor="let catOption of categoryList" [value]="catOption">
+          {{catOption}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Story:</ion-label>
+      <ion-input placeholder="Share the story behind your project" formControlName="story"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="editProjectsForm.controls.story.errors && submitted" color="danger">
+      A description is required
+    </ion-label>
+
+    <ion-item>
+      <ion-label position="stacked">Risk:</ion-label>
+      <ion-input type="text" placeholder="Inform your auidence of the possible risk from investing" formControlName="risk"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="editProjectsForm.controls.risk.errors && submitted" color="danger">
+      This field cannot be empty
+    </ion-label>
+    
+    <ion-item>
+      <ion-label>Target:</ion-label>
+      <ion-input type="number" disabled="true" value={{project.target}}></ion-input>
+      <ion-label slot="end">Eth</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Funding Type</ion-label>
+      <h6>
+        You can choose between a flexible or fixed funding.
+        Flexible: After hitting 50% of the target, all funds will be raised will be dispersed to you regardless of target
+        amount. *Take Note: Project must still be carried out even if only 50% of target is met.
+        Fixed: Funds will only be dispersed if target amount is reached.
+      </h6>
+      <ion-input type="text" disabled="true" value={{project.fundingType}}></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Start Date:</ion-label>
+      <ion-input disabled="true" value={{project.startDate.toDateString()}}></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">End Date:</ion-label>
+      <ion-input disabled="true" value={{project.endDate.toDateString()}}></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" color="secondary" (click)="update()">  
+      Edit Project
+    </ion-button> 
+    <!-- //what color to change for the submit button -->
+  </form>
+</ion-content>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Blogs Written By Our Users!</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary" [routerLink]="['/add-blog']">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of blog">
+      <ion-thumbnail slot="start">
+        <img [src]=item.bImage>
+      </ion-thumbnail>
+      <ion-label [routerLink]="['/specific-blog', item.blogId]">
+        <h2>Title: {{item.bTitle}}</h2>
+        <p>Story: {{item.bStory}}</p>
+        <p>Read Time: {{item.readTime}} Mins</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button color="primary" [routerLink]="['/personal-blog']">
+    My Blogs
+  </ion-button>
+</ion-content>

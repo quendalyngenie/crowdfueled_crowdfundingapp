@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Favorite Events
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+
+  <ion-list>
+    <ion-card *ngFor="let event of favoriteEvents" (click)="goToEventDetail(event.id)">
+      <img [src]="eventImages[event.id]" class="event-image"/>
+      <ion-card-header>
+        <ion-card-title>{{event.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Date:</strong> {{event.date}}, {{event.time}}</p>
+        <p><strong>Location:</strong> {{event.location}}</p>
+        <p><strong>Adult Price:</strong> {{ event.price_adult | currency: 'SGD' }}</p>
+        <p><strong>Student Price:</strong> {{ event.price_student | currency: 'SGD' }}</p>
+        <p><strong>Slots Available:</strong> {{event.slots}}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

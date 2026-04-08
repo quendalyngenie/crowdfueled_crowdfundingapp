@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="previous-page"></ion-back-button>
+    </ion-buttons>
+    
+    <ion-title *ngIf="event">{{ event.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="event">
+  <div class="event-image-container">
+    <img [src]="imageUrl" class="event-image"/>
+  </div>
+  <div class="event-details-container">
+    <h2 class="event-details-title">{{ event.name }}</h2>
+    <p><strong>Date:</strong> {{ event.date }}</p>
+    <p><strong>Time:</strong> {{ event.time }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <div *ngIf="event.geopoint_location" id="map" style="height: 300px; width: 100%;"></div>
+    <p><strong>Price:</strong> {{ event.price_adult | currency: 'SGD' }}</p>
+    <p><strong>Slots:</strong> {{ event.slots }}</p>
+    <p><strong>Status:</strong> {{ event.status }}</p>
+    <p><strong>Details:</strong> {{ event.details }}</p>
+    <ion-button (click)="goToPayment(event.price_adult)">Get Event Ticket</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Favorite Projects
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+
+  <ion-list>
+    <ion-card *ngFor="let campaign of favoriteCampaigns" (click)="goToCampaignDetail(campaign.id)">
+      <img [src]="campaignImages[campaign.id]" class="campaign-image" />
+      <ion-card-header>
+        <ion-card-title>{{campaign.prjName}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>End Date:</strong> {{campaign.endDate.toDate() | date: 'short'}}</p>
+        <ion-progress-bar class="custom-progress-bar" value="{{ campaign.progress/100 }}"
+          color="success"></ion-progress-bar>
+        <!-- the same line align -->
+        <ion-row class="ion-align-items-center">
+          <ion-col size="6">
+            <p>{{ campaign.totalTransactions }} ETH</p>
+          </ion-col>
+          <ion-col size="6">
+            <p class="ion-text-end">{{ campaign.target }} ETH</p>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

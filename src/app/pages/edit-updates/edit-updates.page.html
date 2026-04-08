@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Updates</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="editUpdateForm">
+    <ion-item>
+      <ion-label position="stacked">Project Name:</ion-label>
+      <ion-input type="text" placeholder="Name of your Project" formControlName="updTitle"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="editUpdateForm.controls.updTitle.errors && submitted" color="danger">
+      Name is required
+    </ion-label>
+
+    <ion-item>
+      <ion-label position="stacked">Story:</ion-label>
+      <ion-input placeholder="Share the story behind your project" formControlName="updDetails"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="editUpdateForm.controls.updDetails.errors && submitted" color="danger">
+      A description is required
+    </ion-label>
+
+    <ion-button expand="block" color="secondary" (click)="editUpdate()">  
+      Edit Updates
+    </ion-button> 
+    <!-- //what color to change for the submit button -->
+  </form>
+</ion-content>

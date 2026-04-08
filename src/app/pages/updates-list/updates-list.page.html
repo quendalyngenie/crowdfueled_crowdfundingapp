@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Updates List</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary" [routerLink]="['/create-updates',prjId]">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let each of update">
+    <div class="product-card">
+      <ion-item>{{each.updatetitle}}</ion-item>
+      <p>{{each.updateDetail}}</p>
+    </div>
+    <ion-button shape="round" color="secondary" [routerLink]="['/edit-updates',each.updateID,prjId]">  
+      Edit Update
+    </ion-button>
+  </ion-card>
+</ion-content>

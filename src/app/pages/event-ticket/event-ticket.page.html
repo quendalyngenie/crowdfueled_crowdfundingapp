@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="previous-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ticket Booking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1 class="ion-text-center">{{ event?.name }}</h1>
+  <p class="ion-text-center">{{ event?.date }}, {{ event?.time }}</p>
+  <p class="ion-text-center">Slots Availabe: {{ event?.slots }}</p>
+  <ion-list>
+    <ion-item>
+      <ion-label>Adult: {{ event?.price_adult | currency: 'SGD' }}</ion-label>
+      <ion-button fill="clear" (click)="decrementAdult()">
+        <ion-icon name="remove"></ion-icon>
+      </ion-button>
+      <span>{{ adultTickets }}</span>
+      <ion-button fill="clear" (click)="incrementAdult()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Student: {{ event?.price_student | currency: 'SGD' }}</ion-label>
+      <ion-button fill="clear" (click)="decrementStudent()">
+        <ion-icon name="remove"></ion-icon>
+      </ion-button>
+      <span>{{ studentTickets }}</span>
+      <ion-button fill="clear" (click)="incrementStudent()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <h2 class="ion-text-center">Total: {{ total | currency: 'SGD' }}</h2>
+  <ion-button expand="block" (click)="bookTickets()">Book Tickets</ion-button>
+</ion-content>

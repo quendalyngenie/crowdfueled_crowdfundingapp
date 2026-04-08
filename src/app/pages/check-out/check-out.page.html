@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Check Out</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <!-- <ion-item>
+      <p>Transaction Id:</p>
+      <p id="txnId">{{txnId}}</p>
+    </ion-item>
+    <ion-item>
+      <p>Project Id:</p>
+      <p id="newCampID">{{projectId}}</p>
+    </ion-item> -->
+  <!-- <p id="newCampID">{{projectId}}</p> -->
+  <div *ngIf="rewards.length >=1">
+    <ion-item *ngFor="let each of rewards">
+      <ion-label>
+        <h2>{{each.rewardtitle}}</h2>
+        <h5 id="newrewardId">{{each.rewqardId}}</h5>
+        <p id="newtxnAmt">{{each.price}}</p>
+      </ion-label>
+      <ion-checkbox type="checkbox" slot="end" id="{{each.rewqardId}}"></ion-checkbox>
+    </ion-item>
+    <ion-button expand="block" color="secondary" type="sumbit" (click)="addTxn_Campign()">
+      Proceed
+    </ion-button>
+  </div>
+  <div *ngIf="rewards.length === 0">
+    <ion-item>
+      <h5 id="newrewardId">No Reward</h5>
+    </ion-item>
+
+    <form [formGroup]="donationForm">
+      <ion-item>
+        <ion-label>Donation Amt:</ion-label>
+        <ion-input type="number" formControlName="txnAmt" slot="end"></ion-input>
+        <ion-label slot="end">Eth</ion-label>
+      </ion-item>
+      <ion-button expand="block" color="secondary" type="sumbit" (click)="addTxn_Donation()">
+        Proceed
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

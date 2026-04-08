@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Rewards List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" [routerLink]="['/reward', prjId]">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let each of rewards">
+    <div class="product-card">
+      <ion-item>{{each.rewardtitle}}</ion-item>
+      <p>{{each.rewardDetail}}</p>
+      <p>{{each.price}} Eth</p>
+      <p>{{each.estDelieveryDate | date:'d MMM yyyy'}} Eth</p>
+    </div>
+    <!-- <ion-button shape="round" color="secondary" [routerLink]="['/edit-rewards',each.rewqardId,prjId]">  
+      Edit Update
+    </ion-button> -->
+  </ion-card>
+</ion-content>

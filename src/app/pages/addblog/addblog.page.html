@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Write Your Blog</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content>
+    <form [formGroup]="addBlogForm">
+      <ion-item>
+        <img [src]="photo">
+      </ion-item>
+      <ion-item>
+        <ion-button id="camera-button" (click)="takePhoto()">
+          <p>Upload Photo</p>
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Title</ion-label>
+        <ion-input formControlName="bTitle"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Story</ion-label>
+        <ion-input formControlName="bStory"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Average Read Time</ion-label>
+        <ion-input formControlName="readTime"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" color="secondary" type="submit" (click)=add()>Add</ion-button>
+    </form>
+  </ion-content>
+</ion-content>

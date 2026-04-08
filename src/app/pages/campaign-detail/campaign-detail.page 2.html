@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="previous-page"></ion-back-button>
+    </ion-buttons>
+    
+    <ion-title *ngIf="campaign">{{ campaign.prjName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card *ngIf="campaign">
+  <ion-card-header>
+    <ion-card-title>{{ campaign.prjName }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <img [src]="imageUrl" />
+    <p>Category: {{ campaign.category }}</p>
+    <p>Start Date: {{ campaign.startDate }}</p>
+    <p>End Date: {{ campaign.endDate}}</p>
+    <p>Fund Type: {{ campaign.fundingType }}</p>
+    <p>Project Type: {{ campaign.prjType }}</p>
+    <p>Risk: {{ campaign.risk }}</p>
+    <p>Status: {{ campaign.status }}</p>
+    <p>Story: {{ campaign.story }}</p>
+    <p>Target: {{ campaign.target }}</p>
+    <ion-button >Invest</ion-button>
+  </ion-card-content>
+</ion-card>

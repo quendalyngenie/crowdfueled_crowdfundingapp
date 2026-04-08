@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Project Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <div class="flex-none w-48 relative float-left pr-5">
+      <img [src]=img class="rounded-lg image-card">
+    </div>
+    <div class="flex-auto p-6 text-dblue">
+      <div class="flex flex-wrap">
+        <h1 class="flex-auto text-lg font-semibold text-slate-900">{{project.title}}</h1>
+        <p [routerLink]="['/edit-projects', project.prjId]">Edit Project</p>
+      </div>
+    </div>
+    <div class="pl-5">
+      <p>{{project.status.toUpperCase()}}</p>
+      <h2>Story</h2>
+      <p>{{project.story}}</p>
+      <h2>Risk</h2>
+      <p>{{project.risk}}</p>
+    </div>
+    <div class="flex space-x-4 mb-5 text-sm font-medium">
+      <div class="flex-auto flex space-x-4">
+        <ion-button shape="round" color="secondary" [routerLink]="['/updates-list', project.prjId]">
+          View Updates
+        </ion-button>
+        <ion-button shape="round" color="secondary" [routerLink]="['/rewards-list', project.prjId]">
+          View Rewards
+        </ion-button>
+      </div>
+    </div>
+    <div class="py-5">
+      <p>Current Progress:</p>
+      <ion-progress-bar class="pr-10" value="{{totalAmt}}"></ion-progress-bar>
+      <p>{{truncAmt}}</p>
+    </div>
+  </ion-card>
+</ion-content>

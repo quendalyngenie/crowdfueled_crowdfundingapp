@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>The project has succeeded!</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <img [src]=rewardDetail.image class="image-card">
+    <h1>{{rewardDetail.prjName}}</h1>
+    <ion-label>
+      <p>Thank You for your donation! It has allowed {{rewardDetail.prjName}} to take the first step in turning their dreams into a reality!</p>
+    </ion-label>
+    <ion-label>
+      <p>As a token of appreciation, you are entitled to a reward provided by {{rewardDetail.prjName}}.</p>
+    </ion-label>
+    <ion-card *ngIf="rewardDetail.rewardName != ''">
+      <div>
+        <h3>{{rewardDetail.rewardName}}</h3>
+        <p>Expected Date to Receive: {{rewardDetail.rewardEstDel | date:'d MMM yyyy'}}</p>
+        <!-- <p>Unique Id: 5cd64930f2814409d5b0b6955bfb8d6a90394efb88cbad3b4e168abf33456995</p> -->
+        <p>Unique Id: {{rewardDetail.rewardToken }}</p>
+        <div>
+          <img id="tokenCode"/>
+        </div>
+      </div>
+    </ion-card>
+    <div>
+      <img id="tokenCode"/>
+    </div>
+  </ion-content>
+  

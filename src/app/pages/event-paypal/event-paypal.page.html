@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Payment
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/event-detail"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center">
+    <h2>Pay with PayPal</h2>
+    <ion-icon name="logo-paypal" size="large"></ion-icon>
+    <h3>{{ currencyIcon }}{{ paymentAmount }}</h3>
+    <div id="paypal-button-container"></div>
+  </div>
+</ion-content>

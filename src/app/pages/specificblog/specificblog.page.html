@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Blogs</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <img [src]='blog.bImage'>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>{{blog.bTitle}}</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>{{blog.bStory}}</ion-label>
+  </ion-item>
+
+</ion-content>

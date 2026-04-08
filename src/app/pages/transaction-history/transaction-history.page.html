@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Transaction History</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let transaction of transactions">
+      <ion-card-header>
+        <h3><strong>{{ transaction.event }}</strong></h3>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Date of Transaction:</strong> {{ transaction.date | date }}</p>
+        <p><strong>Total Price:</strong> {{ transaction.price | currency: 'SGD' }}</p>
+        <p><strong>Number of Adult Ticket:</strong> {{ transaction.adultTickets}}</p>
+        <p><strong>Number of Student Ticket:</strong> {{ transaction.studentTickets}}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

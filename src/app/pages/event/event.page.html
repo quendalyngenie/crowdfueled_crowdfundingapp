@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Events
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  <!-- add this dropdown menu to select the filter criteria -->
+  <ion-select [(ngModel)]="selectedFilter" (ionChange)="applyFilter()">
+    <ion-select-option value="latest">Latest Date</ion-select-option>
+    <ion-select-option value="earliest">Earliest Date</ion-select-option>
+    <ion-select-option value="most-expensive-adult">Most Expensive (Adult)</ion-select-option>
+    <ion-select-option value="cheapest-adult">Cheapest (Adult)</ion-select-option>
+    <ion-select-option value="most-expensive-student">Most Expensive (Student)</ion-select-option>
+    <ion-select-option value="cheapest-student">Cheapest (Student)</ion-select-option>
+    <ion-select-option value="most-slots">Most Slots</ion-select-option>
+    <ion-select-option value="least-slots">Least Slots</ion-select-option>
+  </ion-select>
+
+  <!-- add this button to reset the filter -->
+  &nbsp;
+  &nbsp;
+  <ion-icon class="reset-icon" (click)="resetFilter()" name="refresh-circle"></ion-icon>
+
+  <ion-list>
+    <ion-card *ngFor="let event of filteredEvents" (click)="goToEventDetail(event.id)">
+      <img [src]="eventImages[event.id]" class="event-image" />
+      <ion-card-header>
+        <ion-card-title>{{event.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Date:</strong> {{event.date}}, {{event.time}}</p>
+        <p><strong>Location:</strong> {{event.location}}</p>
+        <p><strong>Adult Price:</strong> {{ event.price_adult | currency: 'SGD' }}</p>
+        <p><strong>Student Price:</strong> {{ event.price_student | currency: 'SGD' }}</p>
+        <p><strong>Slots Available:</strong> {{event.slots}}</p>
+      </ion-card-content>
+      <ion-item lines="none">
+        <ion-icon *ngIf="!event.favorites" name="heart-outline" slot="end"
+          (click)="favoriteEvent(event.id); $event.stopPropagation()"></ion-icon>
+        <ion-icon color="danger" *ngIf="event.favorites" name="heart" slot="end"
+          (click)="favoriteEvent(event.id); $event.stopPropagation()"></ion-icon>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+</ion-content>
